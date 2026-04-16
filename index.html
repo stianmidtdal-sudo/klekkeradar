@@ -279,6 +279,44 @@
             </div>
         </section>
 
+        <!-- ═══ EARLY WARNING ═══ -->
+        <section>
+            <h2>Early Warning · When Will Water Temp Reach 12°C?</h2>
+            <div class="warning-grid">
+                <div class="warning-card">
+                    <div class="w-step">Baseline · always available</div>
+                    <div class="w-date">~17 June</div>
+                    <div class="w-unc">± 15 days · historical average</div>
+                    <span class="badge badge-always">✅ Always active</span>
+                </div>
+                <div class="warning-card">
+                    <div class="w-step">Level 1 · Snow-free + 32 days</div>
+                    <div class="w-date" id="wL1Date">–</div>
+                    <div class="w-unc">± 11 days</div>
+                    <span class="badge" id="wL1Badge">⏳ Awaiting snow-free date</span>
+                </div>
+                <div class="warning-card">
+                    <div class="w-step">Level 2 · Water temp extrapolation</div>
+                    <div class="w-date" id="wL2Date">Too early</div>
+                    <div class="w-unc">± 4–7 days · available when WT > 3°C</div>
+                    <span class="badge badge-cold" id="wL2Badge">❄️ Awaiting spring warm-up</span>
+                </div>
+            </div>
+            <div class="best-wrap">
+                <div>
+                    <div class="best-label">▶ Best Estimate Now</div>
+                    <div class="best-date" id="bestDate">–</div>
+                </div>
+                <div class="best-note" id="bestNote">Loading…</div>
+            </div>
+            <div style="font-size:0.74rem;color:#777;margin-top:10px;padding:0 4px;line-height:1.7;">
+                <strong>How it works:</strong>
+                Level 0 (all year): Historical average – WT hits 12°C around 17 June, ±15 days. &nbsp;
+                Level 1 (May): When snow disappears, count 32 days forward. &nbsp;
+                Level 2 (June): When WT > 3°C, extrapolate warming rate to 12°C (±4–7 days).
+            </div>
+        </section>
+
         <!-- ═══ DUAL TRIGGER MODEL ═══ -->
         <section>
             <h2>Dual Trigger Model &nbsp;·&nbsp; GDD ≥ 520 (bt = 0°C, from 1 Jan) &nbsp;+&nbsp; Water Temp ≥ 12°C &nbsp;·&nbsp; MAE = 2.1 days, p = 0.002</h2>
@@ -376,43 +414,6 @@
         </section>
 
         <!-- ═══ EARLY WARNING – WATER TEMP ≥ 12°C ═══ -->
-        <section>
-            <h2>Early Warning · When Will Water Temp Reach 12°C?</h2>
-            <div class="warning-grid">
-                <div class="warning-card">
-                    <div class="w-step">Baseline · always available</div>
-                    <div class="w-date">~17 June</div>
-                    <div class="w-unc">± 15 days · historical average</div>
-                    <span class="badge badge-always">✅ Always active</span>
-                </div>
-                <div class="warning-card">
-                    <div class="w-step">Level 1 · Snow-free + 32 days</div>
-                    <div class="w-date" id="wL1Date">–</div>
-                    <div class="w-unc">± 11 days</div>
-                    <span class="badge" id="wL1Badge">⏳ Awaiting snow-free date</span>
-                </div>
-                <div class="warning-card">
-                    <div class="w-step">Level 2 · Water temp extrapolation</div>
-                    <div class="w-date" id="wL2Date">Too early</div>
-                    <div class="w-unc">± 4–7 days · available when WT > 3°C</div>
-                    <span class="badge badge-cold" id="wL2Badge">❄️ Awaiting spring warm-up</span>
-                </div>
-            </div>
-            <div class="best-wrap">
-                <div>
-                    <div class="best-label">▶ Best Estimate Now</div>
-                    <div class="best-date" id="bestDate">–</div>
-                </div>
-                <div class="best-note" id="bestNote">Loading…</div>
-            </div>
-            <div style="font-size:0.74rem;color:#777;margin-top:10px;padding:0 4px;line-height:1.7;">
-                <strong>How it works:</strong>
-                Level 0 (all year): Historical average – WT hits 12°C around 17 June, ±15 days. &nbsp;
-                Level 1 (May): When snow disappears, count 32 days forward. &nbsp;
-                Level 2 (June): When WT > 3°C, extrapolate warming rate to 12°C (±4–7 days).
-            </div>
-        </section>
-
     </div><!-- /dashboard -->
 </div><!-- /container -->
 
