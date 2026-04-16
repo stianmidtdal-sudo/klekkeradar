@@ -167,9 +167,73 @@
         /* year highlight */
         .yr-2026 { color: #C0392B; font-weight: 700; }
         .yr-na { color: #bbb; }
+    /* ── Password overlay ── */
+    #pw-overlay {
+        position: fixed; inset: 0; z-index: 9999;
+        background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+        display: flex; align-items: center; justify-content: center;
+    }
+    #pw-box {
+        background: white; border-radius: 14px;
+        padding: 44px 40px; width: 320px; text-align: center;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    }
+    #pw-box h2 { color: #1B4332; font-size: 1.25rem; margin-bottom: 6px; }
+    #pw-box p  { color: #666; font-size: 0.82rem; margin-bottom: 24px; }
+    #pw-input {
+        width: 100%; padding: 11px 14px; border: 1.5px solid #ccc;
+        border-radius: 8px; font-size: 1rem; outline: none;
+        transition: border-color .2s;
+    }
+    #pw-input:focus { border-color: #2D6A4F; }
+    #pw-btn {
+        margin-top: 14px; width: 100%; padding: 12px;
+        background: #1B4332; color: white; border: none;
+        border-radius: 8px; font-size: 1rem; cursor: pointer;
+        transition: background .2s;
+    }
+    #pw-btn:hover { background: #2D6A4F; }
+    #pw-error { color: #c0392b; font-size: 0.82rem; margin-top: 10px; min-height: 18px; }
     </style>
 </head>
 <body>
+
+<div id="pw-overlay">
+    <div id="pw-box">
+        <h2>🎣 Klekkeradar</h2>
+        <p>Skriv inn passordet for å åpne dashboardet</p>
+        <input id="pw-input" type="password" placeholder="Passord" autofocus
+               onkeydown="if(event.key==='Enter') checkPw()">
+        <button id="pw-btn" onclick="checkPw()">Åpne</button>
+        <div id="pw-error"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const TOKEN = 'kr_auth_v1';
+    const HASH  = '70b511f3a32c49d9027f92c5b7a57e4e'; // MD5 of vulgata321
+    function md5(s) {
+        // Simple hash check via stored token
+        return s;
+    }
+    if (localStorage.getItem(TOKEN) === HASH) {
+        document.getElementById('pw-overlay').style.display = 'none';
+    }
+    window.checkPw = function() {
+        const val = document.getElementById('pw-input').value;
+        // Compare directly (stored hashed in localStorage for session memory)
+        if (val === 'vulgata321') {
+            localStorage.setItem(TOKEN, HASH);
+            document.getElementById('pw-overlay').style.display = 'none';
+        } else {
+            document.getElementById('pw-error').textContent = 'Feil passord – prøv igjen';
+            document.getElementById('pw-input').value = '';
+            document.getElementById('pw-input').focus();
+        }
+    };
+})();
+</script>
 
 <header>
     <div>
