@@ -259,7 +259,6 @@
                         <th>Winter Snow (cm)</th>
                         <th>Est. Ice Thickness (cm)</th>
                         <th>First Hatch</th>
-                        <th>Notes</th>
                     </tr></thead>
                     <tbody id="histBody"></tbody>
                 </table>
@@ -372,12 +371,12 @@ const CFG = {
 //  HISTORICAL DATA  (from Excel Dashboard 3.0)
 // ═══════════════════════════════════════════════════════════════════
 const HIST = [
-    { year:2025, isgang:"28 May", snowFree:"18 May", snowCm:64, iceCm:23.2, hatch:null,     comment:"Grandis trip 19–29 Jun" },
-    { year:2024, isgang:"26 May", snowFree:"15 May", snowCm:69, iceCm:26.8, hatch:"20 Jun", comment:"Vulgata at Grandistrasket" },
-    { year:2023, isgang:"23 May", snowFree:"9 May",  snowCm:55, iceCm:26.7, hatch:"20 Jun", comment:"Third week June – earliest in years" },
-    { year:2022, isgang:"26 May", snowFree:"14 May", snowCm:78, iceCm:25.7, hatch:"27 Jun", comment:"Last week of June" },
-    { year:2021, isgang:"30 May", snowFree:"19 May", snowCm:60, iceCm:23.7, hatch:"3 Jul",  comment:"First week of July" },
-    { year:2020, isgang:"–",      snowFree:"27 May", snowCm:86, iceCm:23.4, hatch:"13 Jul", comment:"Mid-July – very late year" },
+    { year:2025, isgang:"28 May", snowFree:"18 May", snowCm:64, iceCm:23.2, hatch:null     },
+    { year:2024, isgang:"26 May", snowFree:"15 May", snowCm:69, iceCm:26.8, hatch:"20 Jun" },
+    { year:2023, isgang:"23 May", snowFree:"9 May",  snowCm:55, iceCm:26.7, hatch:"20 Jun" },
+    { year:2022, isgang:"26 May", snowFree:"14 May", snowCm:78, iceCm:25.7, hatch:"27 Jun" },
+    { year:2021, isgang:"30 May", snowFree:"19 May", snowCm:60, iceCm:23.7, hatch:"3 Jul"  },
+    { year:2020, isgang:"–",      snowFree:"27 May", snowCm:86, iceCm:23.4, hatch:"13 Jul" },
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -621,8 +620,7 @@ function renderHistorical() {
             <td>${r.snowFree || '–'}</td>
             <td>${r.snowCm ?? '–'}</td>
             <td>${r.iceCm ? r.iceCm.toFixed(1) : '–'}</td>
-            <td>${r.hatch ? `<strong>${r.hatch}</strong>` : '<span class="yr-na">–</span>'}</td>
-            <td style="font-size:0.78rem;color:#666">${r.comment||''}</td>`;
+            <td>${r.hatch ? `<strong>${r.hatch}</strong>` : '<span class="yr-na">–</span>'}</td>`;
         tbody.appendChild(tr);
     });
 }
