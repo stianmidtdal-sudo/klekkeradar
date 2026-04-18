@@ -3,14 +3,16 @@
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    // Cache at Vercel edge for 1 hour
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600');
 
-    const { parameter, start, end } = req.query;
+    const { parameter, start, end, station } = req.query;
     if (!parameter || !start || !end) {
         return res.status(400).json({ error: 'Missing required query params: parameter, start, end' });
     }
 
     const NVE_KEY     = process.env.NVE_KEY;
-    const NVE_STATION = '212.26.0';
+    const NVE_STATION = station || '212.26.0'; // Default: Suohpatjohka (Kautokeino)
 
     if (!NVE_KEY) {
         return res.status(500).json({ error: 'NVE_KEY environment variable not set' });
