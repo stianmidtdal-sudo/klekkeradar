@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/norway", "destination": "https://hatchwatch-norway-stianmidtdal-sudos-projects.vercel.app/" },
-    { "source": "/norway/(.*)", "destination": "https://hatchwatch-norway-stianmidtdal-sudos-projects.vercel.app/$1" }
+    { "source": "/norway", "destination": "https://hatchwatch-norway.vercel.app/" },
+    { "source": "/norway/(.*)", "destination": "https://hatchwatch-norway.vercel.app/$1" }
   ]
 }
