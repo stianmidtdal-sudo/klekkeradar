@@ -3,14 +3,16 @@
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    // Cache at Vercel edge for 1 hour — reduces Frost API calls dramatically under load
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600');
 
-    const { elements, start, end } = req.query;
+    const { elements, start, end, station } = req.query;
     if (!elements || !start || !end) {
         return res.status(400).json({ error: 'Missing required query params: elements, start, end' });
     }
 
     const FROST_ID      = process.env.FROST_ID;
-    const FROST_STATION = 'SN93700';
+    const FROST_STATION = station || 'SN93700'; // Default: Kautokeino
 
     if (!FROST_ID) {
         return res.status(500).json({ error: 'FROST_ID environment variable not set' });
